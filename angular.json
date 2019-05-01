@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wheather": {
+    "weather": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wheather",
+            "outputPath": "dist/weather",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wheather:build"
+            "browserTarget": "weather:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wheather:build:production"
+              "browserTarget": "weather:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wheather:build"
+            "browserTarget": "weather:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
         }
       }
     },
-    "wheather-e2e": {
+    "weather-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -117,11 +117,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wheather:serve"
+            "devServerTarget": "weather:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wheather:serve:production"
+              "devServerTarget": "weather:serve:production"
             }
           }
         },
@@ -137,5 +137,5 @@
       }
     }
   },
-  "defaultProject": "wheather"
+  "defaultProject": "weather"
 }
