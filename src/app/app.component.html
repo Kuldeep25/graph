@@ -1,0 +1,136 @@
+<router-outlet>
+  <div class="container-fluid pt-3">
+    <h4>Weather data</h4>
+
+    <div class="mt-4 mb-2">Choose the following fields to get Weather data</div>
+    <form #weatherForm="ngForm" name="weatherForm">
+      <div class="row mb-3">
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">Start Month</label>
+          <select class="form-control" name="startMonth"
+                  #startMonth="ngModel" [(ngModel)]="graphData.startMonth"
+                  (change)="getData(weatherForm)" required>
+            <option value="" selected>Select month</option>
+            <option *ngFor="let m of months;let i = index" [value]="i+1">
+              {{m}}
+            </option>
+          </select>
+
+          <div *ngIf="startMonth.errors && (startMonth.dirty || startMonth.touched)"
+               class="error">
+            <div [hidden]="!startMonth.errors.required"
+            >Start Month is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">Start year</label>
+          <select class="form-control" name="startYear" (change)="getData(weatherForm)"
+                  #startYear="ngModel" [(ngModel)]="graphData.startYear" required>
+            <option value="" selected>Select year</option>
+            <option *ngFor="let y of years" [value]="y">
+              {{y}}
+            </option>
+          </select>
+
+          <div *ngIf="startYear.errors && (startYear.dirty || startYear.touched)"
+               class="error">
+            <div [hidden]="!startYear.errors.required"
+            >Start Year is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">End month</label>
+          <select class="form-control" name="endMonth"
+                  #endMonth="ngModel" [(ngModel)]="graphData.endMonth"
+                  (change)="getData(weatherForm)" required>
+            <option value="" selected>Select month</option>
+            <option *ngFor="let m of months;let i = index" [value]="i+1">
+              {{m}}
+            </option>
+          </select>
+
+          <div *ngIf="endMonth.errors && (endMonth.dirty || endMonth.touched)"
+               class="error">
+            <div [hidden]="!endMonth.errors.required"
+            >End Month is required
+            </div>
+          </div>
+          <div style="color: red;" *ngIf="endDateShouldGraterError">End date should always grater than start date</div>
+        </div>
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">End year</label>
+          <select class="form-control" name="endYear" (change)="getData(weatherForm)"
+                  #endYear="ngModel" [(ngModel)]="graphData.endYear" required>
+            <option value="" selected>Select year</option>
+            <option *ngFor="let y of years" [value]="y">
+              {{y}}
+            </option>
+          </select>
+
+          <div *ngIf="endYear.errors && (endYear.dirty || endYear.touched)"
+               class="error">
+            <div [hidden]="!endYear.errors.required"
+            >End Year is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">Location</label>
+          <select class="form-control" name="location"
+                  #location="ngModel" [(ngModel)]="graphData.location"
+                  (change)="getData(weatherForm)" required>
+            <option value="" selected>Select Location</option>
+            <option value="UK">UK</option>
+            <option value="England">England</option>
+            <option value="Scotland">Scotland</option>
+            <option value="Wales">Wales</option>
+          </select>
+
+          <div *ngIf="location.errors && (location.dirty || location.touched)"
+               class="error">
+            <div [hidden]="!location.errors.required"
+            >Location is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-6">
+          <label class="control-label">Metric</label>
+          <select class="form-control" name="metric"
+                  #metric="ngModel" [(ngModel)]="graphData.metric"
+                  (change)="getData(weatherForm)" required>
+            <option value="" selected>Select Metric</option>
+            <option value="Tmax">Max temperature</option>
+            <option value="Tmin">Min temperature</option>
+            <option value="Rainfall">Rainfall</option>
+          </select>
+
+          <div *ngIf="metric.errors && (metric.dirty || metric.touched)"
+               class="error">
+            <div [hidden]="!metric.errors.required"
+            >Metric is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="table-responsive" *ngIf="showGraph">
+      <div class="table">
+        <div id="graph-container"></div>
+      </div>
+    </div>
+  </div>
+</router-outlet>
+<div class="ajax-loading-modal" style="display: none">
+  <div class="center ajax-loader">
+    <img alt="noImg" src="../assets/images/ajax-loader.gif"/>
+  </div>
+</div>

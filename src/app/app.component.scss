@@ -1,0 +1,11 @@
+#graph-container {
+  min-width: 1000px;
+  max-width: 100%;
+  overflow: auto !important;
+  height: 600px;
+  margin: 0 auto
+}
+
+.highcharts-credits{
+  display: none !important;
+}

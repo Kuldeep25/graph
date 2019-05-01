@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  background-color: #180735 !important;
+  color: white !important;
+}
+
+.error {
+  color: red;
+}
+
+.ajax-loading-modal {
+  position: fixed;
+  z-index: 99999999999;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: Black;
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+  -moz-opacity: 0.8;
+  .center {
+    z-index: 1000;
+    margin: 200px auto;
+    padding: 10px;
+    width: 130px;
+    height: 130px;
+    background-color: White;
+    border-radius: 10px;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -moz-opacity: 1;
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
